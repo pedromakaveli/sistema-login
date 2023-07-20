@@ -1,3 +1,29 @@
+<?php
+
+    /* 
+    
+    Verifica se não existe a variavel 'email' na sessão com a negação ! acompanhada do isset
+    Caso não exista (TRUE) e a senha não exista (TRUE), destrua os dados e redirecione para login.php
+    Caso contrário e os dados estejam armazenados e validados, armazene o email na variavel logged 
+    e prossiga
+    
+    **/
+
+    session_start();
+
+    print_r($_SESSION);
+
+    if((!isset($_SESSION['email']) == TRUE) and (!isset($_SESSION['senha']) == TRUE))
+    {
+        unset($_SESSION['email']);
+        unset($_SESSION['senha']);
+        header('Location: login.php');
+    }
+
+    $logged = $_SESSION['email'];
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>

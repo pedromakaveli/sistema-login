@@ -63,12 +63,12 @@
 
     <form action="testlogin.php" method="POST">
         <label for="">Seu email</label>
-        <input require placeholder="Seu email" type="email" name="email" id="">
+        <input required placeholder="Seu email" type="email" name="email" id="">
 
         <label for="">Senha</label>
         <input type="password" name="senha" id="">
 
-        <input require class="btn-enviar" type="submit" name="submit" value="Enviar">
+        <input required class="btn-enviar" type="submit" name="submit" value="Enviar">
 
     </form>
 

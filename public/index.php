@@ -11,6 +11,10 @@
         $estado = $_POST['estado'];
 
         $result = mysqli_query($connect, "INSERT INTO usuarios(email, cidade, estado, nome, senha) VALUES('$email', '$cidade', '$estado', '$nome', '$senha')");
+        
+        // mysqli_query utiliza a conexão da db da variavel $connect do arquivo config.php e insere os valores...
+        // nos campos informados através do INSERT INTO
+    
     }
 
     else {
