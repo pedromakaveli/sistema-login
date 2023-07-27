@@ -46,5 +46,7 @@
             <li class="navbar-link"><a>Deletar</a></li>
         </ul>
     </nav>
+
+    <a href="sair.php">Sair</a>
 </body>
 </html>
