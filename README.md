@@ -31,3 +31,8 @@
   ); // execute </pre>
   <li>Acesse localhost/sistema-login</li>
 </ol>
+
+<h2>Colaboradores</h2>
+
+<img width="130px" src="https://avatars.githubusercontent.com/u/626206?v=4"/>
+<span><a href="www.github.com/guihkx">@Guihkx</a></span>
