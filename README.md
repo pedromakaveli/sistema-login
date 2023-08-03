@@ -35,4 +35,5 @@
 <h2>Colaboradores</h2>
 
 <a href="www.github.com/guihkx"><img width="130px" src="https://avatars.githubusercontent.com/u/626206?v=4"/></a>
+<br />
 <span><a href="www.github.com/guihkx">@Guihkx</a></span>
