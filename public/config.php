@@ -6,7 +6,7 @@
    $db_pass = '';
    $db_name = 'cadastro_formulario';
 
-   $connect = new mysqli($db_host, $db_user, $db_pass, $db_name);
+   $connect = new PDO("mysql:host=localhost;dbname=cadastro_formulario", "root", "");
 
 
 ?>

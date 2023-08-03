@@ -1,35 +1,9 @@
-<?php
-
-    if(isset($_POST['submit']))
-    {
-        include_once('config.php');
-
-        $nome = $_POST['nome'];
-        $senha = $_POST['senha'];
-        $email = $_POST['email'];
-        $cidade = $_POST['cidade'];
-        $estado = $_POST['estado'];
-
-        $result = mysqli_query($connect, "INSERT INTO usuarios(email, cidade, estado, nome, senha) VALUES('$email', '$cidade', '$estado', '$nome', '$senha')");
-        
-        // mysqli_query utiliza a conexão da db da variavel $connect do arquivo config.php e insere os valores...
-        // nos campos informados através do INSERT INTO
-    
-    }
-
-    else {
-        print_r('Você não preencheu todos os campos');
-    }
-?>
-
-
-
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Cadastro</title>
 
     <style>
         body {
@@ -84,25 +58,91 @@
 </head>
 <body>
 
+<?php
+
+if (isset($_POST['email']) && isset($_POST['nome']) && isset($_POST['cidade']) && isset($_POST['estado']) && isset($_POST['senha'])) {  
+    include_once('config.php');
+
+    $errors = []; // Armazena uma lista de erros no formulário
+
+    if (!($email = filter_input(INPUT_POST, 'email', FILTER_VALIDATE_EMAIL))) {
+        $errors[] = 'Campo "Email" inválido';
+    }
+
+    $name = ucwords(trim($_POST['nome']));
+
+    if ($name === '') {
+        $errors[] = 'Campo "Nome" vazio';
+    }
+
+    $city = ucwords(trim($_POST['cidade']));
+
+    if ($city === '') {
+        $errors[] = 'Campo "Cidade" vazio';
+    }
+
+    $state = ucwords(trim($_POST['estado']));
+
+    if ($state === '') {
+        $errors[] = 'Campo "Estado" vazio';
+    }
+
+    $password = trim($_POST['senha']);
+    $password_length = strlen($senha);
+
+    if ($password_length === 0) {
+        $errors[] = 'Senha vazia';
+    }
+    elseif ($password_length < 8 && $password_length > 32) {
+        $errors[] = 'A sua senha deve ter no minimo 8 caracteres e no máximo 32 caracteres';
+    }
+
+    if (empty($erros)) {
+        $hashed_password = password_hash($password, PASSWORD_DEFAULT);
+
+        $inject = $connect->prepare('INSERT INTO usuarios(email, cidade, estado, nome, senha) VALUES(?, ?, ?, ?, ?)');
+        $inject->bindParam(1, $email);
+        $inject->bindParam(2, $city);
+        $inject->bindParam(3, $state);
+        $inject->bindParam(4, $name);
+        $inject->bindParam(5, $hashed_password);
+
+        if ($inject->execute()) {
+            echo "<span style='background: green; padding: 5px 15px; color: #ffff'><b>Cadastro realizado com sucesso!</b></span>". PHP_EOL;
+        }
+        else {
+            echo "ERRO: <span style='background: red; padding: 5px 15px; color: #ffff'><b>Falha ao cadastrar. Erro no banco de dados!</b></span>". PHP_EOL;
+        }
+    }
+    else {
+        foreach($erros as $erro) {
+            echo "<span style='background: red; padding: 5px 15px; color: #ffff'><b>{$erro}</b></span>". PHP_EOL;
+        }
+    }
+}
+
+?>
+
     <h1>Faça seu cadastro</h1>
 
     <form action="index.php" method="POST">
         <label for="">Seu email</label>
-        <input require placeholder="Seu email" type="email" name="email" id="">
+        <input placeholder="Seu email" type="text" name="email" id="">
 
         <label for="">Sua cidade</label>
-        <input require type="text" name="cidade" id="">
+        <input required type="text" name="cidade" id="">
         
         <label for="">Estado</label>
-        <input require type="text" name="estado" id="">
+        <input required type="text" name="estado" id="">
 
         <label for="">Seu nome</label>
-        <input require type="text" name="nome" id="">
+        <input required type="text" name="nome" id="">
 
         <label for="">Senha</label>
         <input type="password" name="senha" id="">
 
-        <input require class="btn-enviar" type="submit" name="submit" value="Enviar">
+
+        <input required class="btn-enviar" type="submit" name="submit" value="Enviar">
     </form>
     
     <div>
