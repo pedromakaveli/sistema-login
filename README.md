@@ -1,6 +1,5 @@
 <h1>Sistema de login com PHP</h1>
 <p>Coloquei em prática os conhecimentos adquiridos na linguagem nesse sistema de cadastro e login</p>
-<br />
 
 <h2>Segurança</h2>
 <p>Foi utilizado</p>
