@@ -13,7 +13,7 @@
 <h2>Como ver o projeto</h2>
 
 <ol>
-  <li>Baixe o <a target="blank" href="www.apachefriends.org/pt_br/download.html">XAMPP</a> ou utilize alguma solução para rodar o Apache e MySQL</li>
+  <li>Baixe o <a href="www.apachefriends.org/pt_br/download.html">XAMPP</a> ou utilize alguma solução para rodar o Apache e MySQL</li>
   <li>Clone o repositório na pasta da sua localhost (htdocs) para XAMPP</li>
   <pre>git clone https://github.com/pedromakaveli/sistema-login.git</pre>
   <li>Ligue o Apache e o MySQL no XAMPP</li>
