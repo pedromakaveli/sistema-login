@@ -12,8 +12,6 @@
         $email = $_POST['email'];
         $senha = $_POST['senha'];
 
-        print_r($email);
-        print_r($senha);
         // Verificando se os parametros existem na db
 
         $sql = "SELECT * FROM usuarios WHERE email = '$email' and senha = '$senha'";
