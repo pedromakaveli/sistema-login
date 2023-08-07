@@ -6,7 +6,10 @@
    $db_pass = '';
    $db_name = 'cadastro_formulario';
 
-   $connect = new PDO("mysql:host=localhost;dbname=cadastro_formulario", "root", "");
-
+   try {
+      $connect = new PDO("mysql:host={$db_host};dbname={$db_name}", $db_user, $db_pass);
+   } catch (Exception $e) {
+      die("ERRO: Falha ao conectar-se ao banco de dados: {$e->getMessage()}");
+   }
 
 ?>
