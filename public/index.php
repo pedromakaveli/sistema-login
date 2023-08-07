@@ -88,7 +88,7 @@ if (isset($_POST['email']) && isset($_POST['nome']) && isset($_POST['cidade']) &
     }
 
     $password = trim($_POST['senha']);
-    $password_length = strlen($senha);
+    $password_length = strlen($password);
 
     if ($password_length === 0) {
         $errors[] = 'Senha vazia';
@@ -97,7 +97,7 @@ if (isset($_POST['email']) && isset($_POST['nome']) && isset($_POST['cidade']) &
         $errors[] = 'A sua senha deve ter no minimo 8 caracteres e no máximo 32 caracteres';
     }
 
-    if (empty($erros)) {
+    if (empty($errors)) {
         $hashed_password = password_hash($password, PASSWORD_DEFAULT);
 
         $inject = $connect->prepare('INSERT INTO usuarios(email, cidade, estado, nome, senha) VALUES(?, ?, ?, ?, ?)');
@@ -115,8 +115,8 @@ if (isset($_POST['email']) && isset($_POST['nome']) && isset($_POST['cidade']) &
         }
     }
     else {
-        foreach($erros as $erro) {
-            echo "<span style='background: red; padding: 5px 15px; color: #ffff'><b>{$erro}</b></span>". PHP_EOL;
+        foreach($errors as $error) {
+            echo "<span style='background: red; padding: 5px 15px; color: #ffff'><b>{$error}</b></span>". PHP_EOL;
         }
     }
 }
