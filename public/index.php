@@ -90,10 +90,7 @@ if (isset($_POST['email']) && isset($_POST['nome']) && isset($_POST['cidade']) &
     $password = trim($_POST['senha']);
     $password_length = strlen($password);
 
-    if ($password_length === 0) {
-        $errors[] = 'Senha vazia';
-    }
-    elseif ($password_length < 8 && $password_length > 32) {
+    if ($password_length < 8 || $password_length > 32) {
         $errors[] = 'A sua senha deve ter no minimo 8 caracteres e no máximo 32 caracteres';
     }
 
