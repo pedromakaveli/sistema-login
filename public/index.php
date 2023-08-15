@@ -1,3 +1,15 @@
+<?php
+
+if (!session_start()) {
+    die("Erro ao criar sessão.");
+}
+
+if (isset($_SESSION['email']) && isset($_SESSION['senha'])) {
+    header('Location: sistema.php');
+    exit(0);
+}
+
+?>
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
