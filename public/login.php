@@ -1,7 +1,14 @@
 <?php
 // iniciando sessão
 
-session_start();
+if (!session_start()) {
+    die("Erro ao criar sessão.");
+}
+
+if (isset($_SESSION['email']) && isset($_SESSION['senha'])) {
+    header('Location: sistema.php');
+    exit(0);
+}
 
 if (isset($_POST['email']) && isset($_POST['senha'])) {
     // acessou
