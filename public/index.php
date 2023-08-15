@@ -124,16 +124,16 @@ if (isset($_POST['email']) && isset($_POST['nome']) && isset($_POST['cidade']) &
 
     <form action="index.php" method="POST">
         <label for="">Seu email</label>
-        <input placeholder="Seu email" type="text" name="email" id="">
+        <input placeholder="Seu email" type="text" name="email" id="" value="<?php echo isset($_POST['email']) ? htmlspecialchars($_POST['email']) : '' ?>">
 
         <label for="">Sua cidade</label>
-        <input required type="text" name="cidade" id="">
+        <input required type="text" name="cidade" id="" value="<?php echo isset($_POST['cidade']) ? htmlspecialchars($_POST['cidade']) : '' ?>">
         
         <label for="">Estado</label>
-        <input required type="text" name="estado" id="">
+        <input required type="text" name="estado" id="" value="<?php echo isset($_POST['estado']) ? htmlspecialchars($_POST['estado']) : '' ?>">
 
         <label for="">Seu nome</label>
-        <input required type="text" name="nome" id="">
+        <input required type="text" name="nome" id="" value="<?php echo isset($_POST['nome']) ? htmlspecialchars($_POST['nome']) : '' ?>">
 
         <label for="">Senha</label>
         <input type="password" name="senha" id="">
