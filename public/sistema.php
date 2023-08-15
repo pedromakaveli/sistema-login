@@ -11,8 +11,6 @@
 
     session_start();
 
-    print_r($_SESSION);
-
     if((!isset($_SESSION['email']) == TRUE) and (!isset($_SESSION['senha']) == TRUE))
     {
         unset($_SESSION['email']);
